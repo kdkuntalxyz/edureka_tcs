@@ -1,0 +1,37 @@
+server:
+  port: 8080
+
+spring:
+  security:
+    user:
+      name: admin
+      password: admin
+  cloud:
+    gateway:
+      routes:
+        - id: 1
+          uri: lb://customer
+          predicates:
+            - Path=/customers/**
+        - id: 2
+          uri: lb://product
+          predicates:
+            - Path=/products/**
+        - id: 3
+          uri: lb://inventory
+          predicates:
+            - Path=/inventories/**
+        - id: 4
+          uri: lb://order
+          predicates:
+            - Path=/orders/**
+        - id: 5
+          uri: lb://payment
+          predicates:
+            - Path=/payments/**
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka

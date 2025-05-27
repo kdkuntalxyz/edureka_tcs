@@ -1,0 +1,16 @@
+{
+  "name": "Mechanical Keyboard",
+  "description": "RGB backlit mechanical keyboard with blue switches",
+  "price": 79.99,
+  "category": "Electronics",
+  "stock": 85
+}
+
+{
+  "name": "Wireless Mouse",
+  "description": "Ergonomic wireless mouse with USB receiver",
+  "price": 29.99,
+  "category": "Electronics",
+  "stock": 150
+}
+
