@@ -6,6 +6,12 @@ spring:
       uri: ${SPRING_DATA_MONGODB_URI}
   kafka:
     bootstrap-servers: ${SPRING_KAFKA_BOOTSTRAP_SERVERS}
+    producer:
+      retries: 2                   # Number of retry attempts
+      acks: all                    # Ensure messages are replicated before ack
+      delivery-timeout-ms: 120000 # Overall timeout
+      request-timeout-ms: 30000
+      retry-backoff-ms: 1000      # Delay between retries
 
 server:
   port: 8085
