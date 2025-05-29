@@ -4,6 +4,19 @@ server:
 spring:
   application:
     name: customer
+  boot:
+    admin:
+      client:
+        url: http://admin:9090
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
 
 eureka:
   client:

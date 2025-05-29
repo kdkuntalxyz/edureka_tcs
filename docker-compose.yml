@@ -79,6 +79,13 @@ services:
     networks:
       - ecommerce
 
+  admin:
+    build: ./admin
+    ports:
+      - "9090:9090"
+    networks:
+      - ecommerce
+
   customer:
     build: ./customer
     ports:

@@ -20,3 +20,6 @@ ecommerce using docker compose+kafka+mongodb+basicauth
 7) Kubeconfig File: Add your kubeconfig file as a "Secret File" and give it the ID kubeconfig-id.
 8) GitHub Webhook (optional):
 9) Set up GitHub → Settings → Webhooks to trigger Jenkins on push events.
+
+#Observability
+1) Open spring boot admin - http://localhost:9090/

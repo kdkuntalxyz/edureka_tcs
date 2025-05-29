@@ -13,6 +13,20 @@ spring:
       request-timeout-ms: 30000
       retry-backoff-ms: 1000       # Delay between retries
 
+  boot:
+    admin:
+      client:
+        url: http://admin:9090
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
 server:
   port: 8085
 
