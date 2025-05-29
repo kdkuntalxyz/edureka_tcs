@@ -1,9 +1,8 @@
 package com.deep.product.api;
 
-import com.deep.product.config.InventoryClient;
 import com.deep.product.domain.Product;
 import com.deep.product.domain.ProductAvailabilityResponse;
-import com.deep.product.repo.Repo;
+import com.deep.product.service.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,39 +24,25 @@ public class Api {
     private static final Logger LOG = LoggerFactory.getLogger(Api.class);
 
     @Autowired
-    Repo repo;
-    @Autowired
-    InventoryClient inventoryClient;
+    ProductService service;
 
     @GetMapping
     public List<Product> getAllProducts() {
-        return repo.findAll();
+        return service.getAllProducts();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<ProductAvailabilityResponse> getProduct(@PathVariable String id) {
-        return repo.findById(id)
-                .map(product -> {
-                    int quantity = inventoryClient.getQuantity(id);
-                    return ResponseEntity.ok(ProductAvailabilityResponse.builder()
-                            .id(product.getId())
-                            .name(product.getName())
-                            .price(product.getPrice())
-                            .description(product.getDescription())
-                            .category(product.getCategory())
-                            .quantity(quantity)
-                            .build());
-                })
-                .orElse(ResponseEntity.notFound().build());
+        return ResponseEntity.ok(service.getProduct(id));
     }
 
     @PostMapping
     public Product addProduct(@RequestBody Product product) {
-        return repo.save(product);
+        return service.addProduct(product);
     }
 
     @DeleteMapping("/{id}")
     public void deleteProduct(@PathVariable String id) {
-        repo.deleteById(id);
+        service.deleteProduct(id);
     }
 }

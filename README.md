@@ -7,7 +7,7 @@ ecommerce using docker compose+kafka+mongodb+basicauth
 2) package individual apis - mvn clean package -DskipTests
 3) run in root - docker-compose up --build
 
-#kuberatis
+#kubernetes
 1) run command - kubectl apply -f k8s/kubernetes-deployment.yaml
 
 #Jenkins - Install Required Jenkins Plugins:
